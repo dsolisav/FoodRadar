@@ -103,7 +103,6 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         mLocationRequest = createLocationRequest()
-
         mLocationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult) {
                 val location = locationResult.lastLocation
@@ -144,12 +143,12 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
 
         boton.setOnClickListener {
             //Ubicar el mapa en la ubicación del usuario
-            mapView.controller.setZoom(15.0)
-            mapView.controller.setCenter(Data.latitud?.let { it1 -> Data.longitud?.let { it2 ->
-                GeoPoint(it1,
-                    it2
-                )
-            } })
+           mapView.controller.setZoom(15.0)
+           mapView.controller.setCenter(Data.latitud?.let { it1 -> Data.longitud?.let { it2 ->
+               GeoPoint(it1,
+                   it2
+               )
+           } })
 
         }
 
@@ -295,11 +294,11 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var intentCuenta = Intent(this, Perfil::class.java)
+        // TO-DO ENTREGA FINAL var intentCuenta = Intent(this, Perfil::class.java)
         var intentMiRestaurante = Intent(this, MiRestaurante::class.java)
         var intentCerrarSesion = Intent(this, InicioSesion::class.java)
         when (item.itemId) {
-            R.id.Cuenta -> startActivity(intentCuenta)
+            // TO-DO ENTREGA FINAL R.id.Cuenta -> startActivity(intentCuenta)
             R.id.miRestaurante -> startActivity(intentMiRestaurante)
             R.id.Inicio -> {}
             R.id.cerrarSesion -> {

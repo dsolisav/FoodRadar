@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,7 +15,49 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodRadar">
         <activity
-            android:name=".MainActivity"
+            android:name=".logic.CreacionCuentaRestaurante"
+            android:exported="false" />
+        <!-- Para el Caché -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+<!--        <activity-->
+<!--            android:name=".logic.PerfilRestaurante"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".logic.CalificarRestaurante"-->
+<!--            android:exported="false"-->
+<!--            android:windowSoftInputMode="adjustNothing" />-->
+        <activity
+            android:name=".logic.MiRestaurante"
+            android:exported="false" />
+        <activity
+            android:name=".logic.MapaRestaurante"
+            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".logic.Perfil"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".logic.EditarCuenta"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".logic.CambiarContrasena"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".logic.CreacionCuenta"
+            android:exported="true" />
+        <activity
+            android:name=".logic.Opciones"
+            android:exported="true" />
+        <activity
+            android:name=".logic.Mapa"
+            android:exported="true" />
+        <activity
+            android:name=".logic.Paradas"
+            android:exported="true"/>
+        <activity
+            android:name=".logic.InicioSesion"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

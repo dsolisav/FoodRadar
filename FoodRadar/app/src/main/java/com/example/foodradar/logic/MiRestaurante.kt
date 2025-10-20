@@ -17,7 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.biometric.BiometricPrompt
+// TO-DO ENTREGA FINAL import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.example.foodradar.R
 import com.example.foodradar.data.Funciones
@@ -34,15 +34,15 @@ class MiRestaurante : AppCompatActivity() {
     private lateinit var nombreRestaurante: TextView
     lateinit var calificacion: TextView
     lateinit var direccion: TextView
-    private lateinit var biometricPrompt: BiometricPrompt
-    private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    // TO-DO ENTREGA FINAL private lateinit var biometricPrompt: BiometricPrompt
+    // TO-DO ENTREGA FINAL private lateinit var promptInfo: BiometricPrompt.PromptInfo
     private lateinit var executor: Executor
 
     private var isSwitchToggledManually = false // Flag to control switch toggling
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mi_restaurante)
+        // TO-DO ENTREGA FINAL setContentView(R.layout.activity_mi_restaurante)
         val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
@@ -61,17 +61,17 @@ class MiRestaurante : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val intentCuenta = Intent(this, Perfil::class.java)
-        val intentInicio = Intent(this, Mapa::class.java)
-        var intentCerrarSesion = Intent(this, InicioSesion::class.java)
+        // TO-DO ENTREGA FINAL val intentCuenta = Intent(this, Perfil::class.java)
+        // TO-DO ENTREGA FINAL val intentInicio = Intent(this, Mapa::class.java)
+        // TO-DO ENTREGA FINAL var intentCerrarSesion = Intent(this, InicioSesion::class.java)
         when(item.itemId){
-            R.id.Cuenta -> startActivity(intentCuenta)
+            // TO-DO ENTREGA FINAL R.id.Cuenta -> startActivity(intentCuenta)
             R.id.miRestaurante -> {}
-            R.id.Inicio -> startActivity(intentInicio)
+            // TO-DO ENTREGA FINAL R.id.Inicio -> startActivity(intentInicio)
             R.id.cerrarSesion -> {
                 Funciones.clearSesion()
-                intentCerrarSesion.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intentCerrarSesion)
+                // TO-DO ENTREGA FINAL intentCerrarSesion.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                // TO-DO ENTREGA FINAL startActivity(intentCerrarSesion)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -81,38 +81,38 @@ class MiRestaurante : AppCompatActivity() {
     //Funcion para inicializar elementos de la interfaz
     private fun initializeUIElements() {
         val categoria = Sesion.restaurante["categoria"]
-        val imagenRestaurante = findViewById<ImageView>(R.id.imagenRestaurante)
+        // TO-DO ENTREGA FINAL val imagenRestaurante = findViewById<ImageView>(R.id.imagenRestaurante)
 
         if(categoria == "Hamburguesa"){
-            imagenRestaurante.setImageResource(R.drawable.restaurant)
+            // TO-DO ENTREGA FINAL imagenRestaurante.setImageResource(R.drawable.restaurant)
         }else if(categoria == "Sushi"){
-            imagenRestaurante.setImageResource(R.drawable.sushirestaurant)
+            // TO-DO ENTREGA FINAL imagenRestaurante.setImageResource(R.drawable.sushirestaurant)
         }else if(categoria == "Pizza"){
-            imagenRestaurante.setImageResource(R.drawable.pizzarestaurant)
+            // TO-DO ENTREGA FINAL imagenRestaurante.setImageResource(R.drawable.pizzarestaurant)
         }
 
 
         nombreRestaurante = findViewById(R.id.nombreRestaurante)
         nombreRestaurante.text = Sesion.restaurante.get("nombre").toString()
 
-        calificacion = findViewById(R.id.calificacion)
+        // TO-DO ENTREGA FINAL calificacion = findViewById(R.id.calificacion)
         calificacion.text = Sesion.restaurante.get("calificacion").toString()
 
-        switchRestaurante = findViewById(R.id.switchRestaurante)
+        // TO-DO ENTREGA FINAL switchRestaurante = findViewById(R.id.switchRestaurante)
         //initial state for switch
         var initialVisibility = Sesion.restaurante["visibilidad"] as Boolean
         Log.i("RestauranteVisibility", initialVisibility.toString())
         if(initialVisibility == true){
             switchRestaurante.isChecked = true
             switchRestaurante.text = "Abierto"
-            switchRestaurante.setTextColor(resources.getColor(R.color.verde))
+            // TO-DO ENTREGA FINAL switchRestaurante.setTextColor(resources.getColor(R.color.verde))
         }else{
             switchRestaurante.isChecked = false
             switchRestaurante.text = "Cerrado"
-            switchRestaurante.setTextColor(resources.getColor(R.color.rojo))
+            // TO-DO ENTREGA FINAL switchRestaurante.setTextColor(resources.getColor(R.color.rojo))
         }
 
-        direccion = findViewById(R.id.direccionRestaurante)
+        // TO-DO ENTREGA FINAL direccion = findViewById(R.id.direccionRestaurante)
         var latitude = Sesion.restaurante["latitud"] as Double
         var longitude = Sesion.restaurante["longitud"] as Double
         getLocationText(latitude, longitude)
@@ -137,29 +137,30 @@ class MiRestaurante : AppCompatActivity() {
 
     //Funcion para inicializar/configurar prompt de huella
     private fun setupBiometricPrompt() {
-        executor = ContextCompat.getMainExecutor(this)
-        biometricPrompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
-            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                super.onAuthenticationSucceeded(result)
-                onBiometricSuccess() //Manejar autenticacion exitosa
-            }
+        //  TO-DO ENTREGA FINAL DESCOMENTAR TODA ESTA FUNCION
+        //  TO-DO ENTREGA FINAL executor = ContextCompat.getMainExecutor(this)
+        // TO-DO ENTREGA FINAL biometricPrompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
+//            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+//                super.onAuthenticationSucceeded(result)
+//                onBiometricSuccess() //Manejar autenticacion exitosa
+//            }
+//
+//            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+//                super.onAuthenticationError(errorCode, errString)
+//                onBiometricError(errString) //Manejar error de autenticacion
+//            }
+//
+//            override fun onAuthenticationFailed() {
+//                super.onAuthenticationFailed()
+//                onBiometricFailed() //Manejar autenticacion fallida
+//            }
+        //  TO-DO ENTREGA FINAL })
 
-            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                super.onAuthenticationError(errorCode, errString)
-                onBiometricError(errString) //Manejar error de autenticacion
-            }
-
-            override fun onAuthenticationFailed() {
-                super.onAuthenticationFailed()
-                onBiometricFailed() //Manejar autenticacion fallida
-            }
-        })
-
-        promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Autenticacion Biométrica")
-            .setSubtitle("\nConfirma tu identidad para cambiar el estado del restaurante")
-            .setNegativeButtonText("Cancelar")
-            .build()
+//        promptInfo = BiometricPrompt.PromptInfo.Builder()
+//            .setTitle("Autenticacion Biométrica")
+//            .setSubtitle("\nConfirma tu identidad para cambiar el estado del restaurante")
+//            .setNegativeButtonText("Cancelar")
+//            .build()
     }
 
     //Funcion para manejar el comportamiento del switch
@@ -169,7 +170,7 @@ class MiRestaurante : AppCompatActivity() {
                 isSwitchToggledManually = false //Resetear bandera despues de toggle manual
             } else {
                 switchRestaurante.isChecked = !isChecked //Revertir toggle
-                biometricPrompt.authenticate(promptInfo) //Mostrar prompt biometrico
+                // TO-DO ENTREGA FINAL biometricPrompt.authenticate(promptInfo) //Mostrar prompt biometrico
             }
         }
     }
@@ -180,10 +181,10 @@ class MiRestaurante : AppCompatActivity() {
         val stateChecked = switchRestaurante.isChecked
         if (stateChecked) {
             switchRestaurante.text = "Abierto"
-            switchRestaurante.setTextColor(resources.getColor(R.color.verde))
+            // TO-DO ENTREGA FINAL switchRestaurante.setTextColor(resources.getColor(R.color.verde))
         } else {
             switchRestaurante.text = "Cerrado"
-            switchRestaurante.setTextColor(resources.getColor(R.color.rojo))
+            // TO-DO ENTREGA FINAL switchRestaurante.setTextColor(resources.getColor(R.color.rojo))
         }
     }
 
