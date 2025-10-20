@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".logic.MapaRestaurante"
+    android:padding="12dp">
+
+    <EditText
+        android:id="@+id/etDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="16dp"
+        android:hint="Direccion"
+        android:background="@color/Normal"
+        android:drawableLeft="@android:drawable/ic_menu_mylocation"
+        android:inputType="text"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <TextView
+        android:id="@+id/tvInstrucciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/etDireccion"
+        android:textAlignment="center"
+        android:text="Ingresa tu dirección y presiona Enter y luego el boton para cargar la ubicación. Si quieres la ubicacion actual, solo presiona el boton"
+        android:textColor="@color/Normal"
+        android:textSize="16sp"/>
+
+
+    <Button
+        android:id="@+id/BotonMapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tvInstrucciones"
+        android:text="Cargar ubicacion"
+        android:backgroundTint="@color/Normal" />
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_below="@id/BotonMapa"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <org.osmdroid.views.MapView
+            android:id="@+id/osmMapRestaurante"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </FrameLayout>
+
+</RelativeLayout>
