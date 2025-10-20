@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Normal">#FF9800</color>
+    <color name="Pressed">#9C27B0</color>
+    <color name="naranjaPrincipal">#EF9F27</color>
+    <color name="textoPrincipal">#172B4D</color>
+    <color name="grayBackground">#f8f4f4</color>
+    <color name="textoSecundario">#7A869A</color>
+    <color name="textoGris">#505050</color>
+    <color name="verde">#40B306</color>
+    <color name="transparent">#00000000</color>
+    <color name="rojo">#eb0000</color>
+    <color name="naranjaFocus">#FF723F</color>
+
 </resources>
