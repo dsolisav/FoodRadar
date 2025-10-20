@@ -24,15 +24,15 @@ import com.example.foodradar.data.Funciones
 import com.example.foodradar.data.Sesion
 import com.example.foodradar.data.Restaurant
 import com.example.foodradar.data.RestaurantesListener
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+// TO-DO ENTREGA FINAL import com.google.android.gms.location.FusedLocationProviderClient
+// TO-DO ENTREGA FINAL import com.google.android.gms.location.LocationServices
 import java.util.Locale
 
 class Paradas: AppCompatActivity(), RestaurantesListener {
 
     private lateinit var Restaurante: String
     private lateinit var statusTextView: TextView
-    private  lateinit var mFusedLocationClient: FusedLocationProviderClient
+    // TO-DO ENTREGA FINAL private  lateinit var mFusedLocationClient: FusedLocationProviderClient
     lateinit var listView: ListView
     private lateinit var seleccion: Button
 
@@ -50,7 +50,7 @@ class Paradas: AppCompatActivity(), RestaurantesListener {
         seleccion = findViewById(R.id.botonCrearRuta)
         listView = findViewById<ListView>(R.id.lista)
         statusTextView = findViewById(R.id.Ubicacion)
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        // TO-DO ENTREGA FINAL mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         Restaurante = intent.getStringExtra("TipoRestaurante") ?: ""
         Funciones.escucharRestaurantes(this, Restaurante) // `this` es un `RestaurantesListener`
@@ -62,7 +62,7 @@ class Paradas: AppCompatActivity(), RestaurantesListener {
         statusTextView.text = "Ubicado en latitud $ubicacion"
 
         seleccion.setOnClickListener {
-            val intent = Intent(this, Mapa::class.java)
+            // TO-DO ENTREGA FINAL val intent = Intent(this, Mapa::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
             startActivity(intent)
         }
@@ -95,14 +95,14 @@ class Paradas: AppCompatActivity(), RestaurantesListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var intentCuenta = Intent(this, Perfil::class.java)
+        // TO-DO ENTREGA FINAL var intentCuenta = Intent(this, Perfil::class.java)
         var intentMiRestaurante = Intent(this, MiRestaurante::class.java)
-        var intentInicio = Intent(this, Mapa::class.java)
+        // TO-DO ENTREGA FINAL var intentInicio = Intent(this, Mapa::class.java)
         var intentCerrarSesion = Intent(this, InicioSesion::class.java)
         when(item.itemId){
-            R.id.Cuenta -> startActivity(intentCuenta)
+            // TO-DO ENTREGA FINAL R.id.Cuenta -> startActivity(intentCuenta)
             R.id.miRestaurante -> startActivity(intentMiRestaurante)
-            R.id.Inicio -> startActivity(intentInicio)
+            // TO-DO ENTREGA FINAL R.id.Inicio -> startActivity(intentInicio)
             R.id.cerrarSesion -> {
                 Funciones.clearSesion()
                 intentCerrarSesion.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

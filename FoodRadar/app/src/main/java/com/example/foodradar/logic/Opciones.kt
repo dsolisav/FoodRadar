@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import com.example.foodradar.R
 import com.example.foodradar.data.Data
 import com.example.foodradar.data.Restaurant
-import org.osmdroid.api.IMapController
+// TO-DO ENTREGA FINAL import org.osmdroid.api.IMapController
 import java.util.ArrayList
 import com.example.foodradar.data.Sesion
 

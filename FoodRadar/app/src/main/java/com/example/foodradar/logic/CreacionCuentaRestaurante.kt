@@ -78,8 +78,8 @@ class CreacionCuentaRestaurante : AppCompatActivity() {
         }
 
         botonMapa.setOnClickListener {
-            val intent = Intent(this, MapaRestaurante::class.java)
-            startActivityForResult(intent, Data.MY_PERMISSION_LOCATION_CODE)
+            // val intent = Intent(this, MapaRestaurante::class.java)
+            // startActivityForResult(intent, Data.MY_PERMISSION_LOCATION_CODE)
 
         }
     }

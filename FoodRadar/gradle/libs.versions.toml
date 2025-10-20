@@ -10,8 +10,10 @@ material = "1.13.0"
 activity = "1.11.0"
 constraintlayout = "2.2.1"
 firebaseCommonKtx = "22.0.1"
+gson = "2.11.0"
 
 [libraries]
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
