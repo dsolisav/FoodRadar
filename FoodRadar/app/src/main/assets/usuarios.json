@@ -1,0 +1,158 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "userName": "dsolisav",
+            "nombre": "David",
+            "apellido": "Solis",
+            "email": "test@gmail.com",
+            "restaurante": {
+                "nombre": "King's Burguer",
+                "categoria": "Hamburguesa",
+                "calificacion": 4.3,
+                "longitud": -74.075503,
+                "latitud": 4.610867
+            }
+        },
+        {
+            "id": 2,
+            "userName": "jsmith",
+            "nombre": "John",
+            "apellido": "Smith",
+            "email": "john.smith@gmail.com",
+            "restaurante": {
+                "nombre": "",
+                "categoria": "",
+                "calificacion": 0,
+                "longitud": 0,
+                "latitud": 0
+            }
+        },
+        {
+            "id": 3,
+            "userName": "mjane",
+            "nombre": "Mary",
+            "apellido": "Jane",
+            "email": "mary.jane@gmail.com",
+            "restaurante": {
+                "nombre": "Pizza Palace",
+                "categoria": "Pizza",
+                "calificacion": 4.7,
+                "longitud": -74.070194,
+                "latitud": 4.609710
+            }
+        },
+        {
+            "id": 4,
+            "userName": "jdoe",
+            "nombre": "Jane",
+            "apellido": "Doe",
+            "email": "jane.doe@gmail.com",
+            "restaurante": {
+                "nombre": "",
+                "categoria": "",
+                "calificacion": 0,
+                "longitud": 0,
+                "latitud": 0
+            }
+        },
+        {
+            "id": 5,
+            "userName": "kbrown",
+            "nombre": "Kevin",
+            "apellido": "Brown",
+            "email": "kevin.brown@gmail.com",
+            "restaurante": {
+                "nombre": "Taco Fiesta",
+                "categoria": "Hamburguesa",
+                "calificacion": 4.5,
+                "longitud": -74.065846,
+                "latitud": 4.611940
+            }
+        },
+        {
+            "id": 6,
+            "userName": "slopez",
+            "nombre": "Sofia",
+            "apellido": "Lopez",
+            "email": "sofia.lopez@gmail.com",
+            "restaurante": {
+                "nombre": "",
+                "categoria": "",
+                "calificacion": 0,
+                "longitud": 0,
+                "latitud": 0
+            }
+        },
+        {
+            "id": 7,
+            "userName": "mbrown",
+            "nombre": "Maria",
+            "apellido": "Brown",
+            "email": "maria.brown@gmail.com",
+            "restaurante": {
+                "nombre": "La Parrilla Bogotana",
+                "categoria": "Hamburguesa",
+                "calificacion": 4.6,
+                "longitud": -74.082276,
+                "latitud": 4.653332
+            }
+        },
+        {
+            "id": 8,
+            "userName": "pcastro",
+            "nombre": "Pedro",
+            "apellido": "Castro",
+            "email": "pedro.castro@gmail.com",
+            "restaurante": {
+                "nombre": "",
+                "categoria": "",
+                "calificacion": 0,
+                "longitud": 0,
+                "latitud": 0
+            }
+        },
+        {
+            "id": 9,
+            "userName": "jrojas",
+            "nombre": "Juan",
+            "apellido": "Rojas",
+            "email": "juan.rojas@gmail.com",
+            "restaurante": {
+                "nombre": "Café de la Montaña",
+                "categoria": "Sushi",
+                "calificacion": 4.8,
+                "longitud": -74.059327,
+                "latitud": 4.667937
+            }
+        },
+        {
+            "id": 10,
+            "userName": "lramirez",
+            "nombre": "Luis",
+            "apellido": "Ramirez",
+            "email": "luis.ramirez@gmail.com",
+            "restaurante": {
+                "nombre": "Empanadas Express",
+                "categoria": "Pizza",
+                "calificacion": 4.2,
+                "longitud": -74.112234,
+                "latitud": 4.628776
+            }
+        },
+        {
+            "id": 11,
+            "userName": "cgarcia",
+            "nombre": "Carlos",
+            "apellido": "Garcia",
+            "email": "carlos.garcia@gmail.com",
+            "restaurante": {
+                "nombre": "",
+                "categoria": "",
+                "calificacion": 0,
+                "longitud": 0,
+                "latitud": 0
+            }
+        }
+    ]
+}
