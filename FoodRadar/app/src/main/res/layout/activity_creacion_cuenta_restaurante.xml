@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center"
+        tools:ignore="UseSwitchCompatOrMaterialXml">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="370dp"
+            android:layout_height="194dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/iconwelcome" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¡Crea tu restaurante!"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrate para poder usar nuestros servicios"
+            android:textStyle="italic"
+            android:textSize="14sp"
+            android:layout_gravity="center"/>
+
+
+
+        <EditText
+            android:id="@+id/Nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Nombre" />
+
+        <EditText
+            android:id="@+id/Apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Apellido" />
+
+        <EditText
+            android:id="@+id/Correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="Correo Electronico"/>
+
+        <EditText
+            android:id="@+id/NomUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Nombre de Usuario" />
+
+        <EditText
+            android:id="@+id/Contraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Contraseña"/>
+        <EditText
+            android:id="@+id/nombreRestaurante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Nombre del restaurante"/>
+        <Button
+            android:id="@+id/BotonMapa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrese Ubicacion"
+            android:backgroundTint="@color/Normal" />
+
+        <EditText
+            android:id="@+id/Ubicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Ubicacion" />
+
+        <Spinner
+            android:id="@+id/spinnerCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:entries="@array/categorias"
+            />
+
+
+
+
+        <Button
+            android:id="@+id/BotonCrearCuenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crear cuenta"
+            android:backgroundTint="@color/Normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Ya tienes cuenta?"
+                android:textStyle="italic"
+                android:textSize="14sp"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/InicioSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicia sesion"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:textColor="@color/Normal"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
