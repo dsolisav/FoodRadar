@@ -259,15 +259,16 @@ class Funciones {
             }
         }
 
-        fun createNewComment(comentario : Comentario): JSONObject {
-            return JSONObject().apply {
-                put("nombre_completo", comentario.nombre_completo)
-                put("calificacion", comentario.calificacion)
-                put("fecha", comentario.fecha)
-                put("descripcion", comentario.descripcion)
+        // TO-DO ENTREGA FINAL
+        // fun createNewComment(comentario : Comentario): JSONObject {
+        //     return JSONObject().apply {
+        //         put("nombre_completo", comentario.nombre_completo)
+        //         put("calificacion", comentario.calificacion)
+        //         put("fecha", comentario.fecha)
+        //         put("descripcion", comentario.descripcion)
 
-            }
-        }
+        //     }
+        // }
 
         //Verificar si el archivo ya fue copiado
         fun isFileCopiedUsers(context: Context): Boolean {

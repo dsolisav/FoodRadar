@@ -1,0 +1,124 @@
+{
+"restaurantes":[
+    {
+        "id": 1,
+        "nombre": "Pizza & Pasta",
+        "categoria": "Pizza",
+        "calificacion": 4.5,
+        "longitud": -74.063644,
+        "latitud": 4.64515
+    },
+    {
+        "id": 2,
+        "nombre": "Sushi House",
+        "categoria": "Sushi",
+        "calificacion": 4.7,
+        "longitud": -74.075503,
+        "latitud": 4.610867
+    },
+    {
+        "id": 3,
+        "nombre": "Burger Bar",
+        "categoria": "Hamburguesa",
+        "calificacion": 4.2,
+        "longitud": -74.057311,
+        "latitud": 4.646418
+    },
+    {
+        "id": 4,
+        "nombre": "Pizza Gourmet",
+        "categoria": "Pizza",
+        "calificacion": 4.8,
+        "longitud": -74.099766,
+        "latitud": 4.598188
+    },
+    {
+        "id": 5,
+        "nombre": "Sushi World",
+        "categoria": "Sushi",
+        "calificacion": 4.4,
+        "longitud": -74.073145,
+        "latitud": 4.632778
+    },
+    {
+        "id": 6,
+        "nombre": "Hamburguesas al Carbón",
+        "categoria": "Hamburguesa",
+        "calificacion": 4.6,
+        "longitud": -74.064450,
+        "latitud": 4.635200
+    },
+    {
+        "id": 7,
+        "nombre": "Pizzería Italia",
+        "categoria": "Pizza",
+        "calificacion": 4.3,
+        "longitud": -74.049484,
+        "latitud": 4.605151
+    },
+    {
+        "id": 8,
+        "nombre": "Sushi Express",
+        "categoria": "Sushi",
+        "calificacion": 4.5,
+        "longitud": -74.097219,
+        "latitud": 4.609556
+    },
+    {
+        "id": 9,
+        "nombre": "Burger Factory",
+        "categoria": "Hamburguesa",
+        "calificacion": 4.0,
+        "longitud": -74.071532,
+        "latitud": 4.628647
+    },
+    {
+        "id": 10,
+        "nombre": "Pizza Time",
+        "categoria": "Pizza",
+        "calificacion": 4.7,
+        "longitud": -74.092189,
+        "latitud": 4.585784
+    },
+    {
+        "id": 11,
+        "nombre": "Sushi Land",
+        "categoria": "Sushi",
+        "calificacion": 4.6,
+        "longitud": -74.075998,
+        "latitud": 4.631117
+    },
+    {
+        "id": 12,
+        "nombre": "La Hamburguesería",
+        "categoria": "Hamburguesa",
+        "calificacion": 4.9,
+        "longitud": -74.104179,
+        "latitud": 4.608275
+    },
+    {
+        "id": 13,
+        "nombre": "Pizzas del Mundo",
+        "categoria": "Pizza",
+        "calificacion": 4.1,
+        "longitud": -74.090205,
+        "latitud": 4.621173
+    },
+    {
+        "id": 14,
+        "nombre": "Sushi Corner",
+        "categoria": "Sushi",
+        "calificacion": 4.2,
+        "longitud": -74.059892,
+        "latitud": 4.652307
+    },
+    {
+        "id": 15,
+        "nombre": "Burger House",
+        "categoria": "Hamburguesa",
+        "calificacion": 4.4,
+        "longitud": -74.101256,
+        "latitud": 4.617539
+    }
+]
+}

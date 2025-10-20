@@ -1,0 +1,65 @@
+{
+    "comentarios": [
+      {
+        "nombre_completo": "Juan Pérez",
+        "calificacion": "5.0 estrellas",
+        "fecha": "15-09-24",
+        "descripcion": "Excelente servicio y comida deliciosa. El ambiente es muy acogedor y el personal siempre está atento a las necesidades de los clientes. Definitivamente, un lugar al que volveré."
+      },
+      {
+        "nombre_completo": "María Gómez",
+        "calificacion": "4.0 estrellas",
+        "fecha": "12-09-24",
+        "descripcion": "Buena comida, pero el servicio puede mejorar. Tardaron un poco en atendernos, pero la calidad de los platos compensó la espera. Volvería a darle otra oportunidad."
+      },
+      {
+        "nombre_completo": "Carlos Rodríguez",
+        "calificacion": "3.0 estrellas",
+        "fecha": "10-09-24",
+        "descripcion": "La comida estaba bien, pero nada especial. El lugar es agradable, pero creo que hay mejores opciones en la zona. El servicio fue correcto, sin más."
+      },
+      {
+        "nombre_completo": "Ana Martínez",
+        "calificacion": "5.0 estrellas",
+        "fecha": "08-09-24",
+        "descripcion": "Ambiente acogedor y platos exquisitos. Me encantó la decoración y la atención del personal. Los postres son una delicia y tienen una buena selección de vinos."
+      },
+      {
+        "nombre_completo": "Luis Fernández",
+        "calificacion": "2.0 estrellas",
+        "fecha": "05-09-24",
+        "descripcion": "El servicio fue lento y la comida fría. No cumplió con mis expectativas y creo que hay mucho por mejorar. No creo que vuelva pronto."
+      },
+      {
+        "nombre_completo": "Sofía López",
+        "calificacion": "4.0 estrellas",
+        "fecha": "03-09-24",
+        "descripcion": "Buena relación calidad-precio. Los platos son generosos y bien presentados. El ambiente es agradable, aunque un poco ruidoso. Ideal para una cena informal con amigos."
+      },
+      {
+        "nombre_completo": "Miguel Torres",
+        "calificacion": "5.0 estrellas",
+        "fecha": "01-09-24",
+        "descripcion": "Todo perfecto, volveré pronto. La atención fue excelente y la comida superó mis expectativas. Recomiendo especialmente los platos de mariscos, son frescos y bien preparados."
+      },
+      {
+        "nombre_completo": "Laura Sánchez",
+        "calificacion": "3.0 estrellas",
+        "fecha": "28-08-24",
+        "descripcion": "El lugar es bonito, pero la comida regular. No me impresionó mucho y creo que hay mejores opciones en la zona. El servicio fue correcto."
+      },
+      {
+        "nombre_completo": "Jorge Ramírez",
+        "calificacion": "4.0 estrellas",
+        "fecha": "25-08-24",
+        "descripcion": "Buena comida, pero el ambiente ruidoso. Los platos son sabrosos y bien presentados, pero el ruido del lugar puede ser un poco molesto. Ideal para una comida rápida."
+      },
+      {
+        "nombre_completo": "Elena Castillo",
+        "calificacion": "5.0 estrellas",
+        "fecha": "22-08-24",
+        "descripcion": "Me encantó todo, muy recomendable. La atención fue excelente y la comida deliciosa. El ambiente es perfecto para una cena romántica o una celebración especial."
+      }
+    ]
+  }
+  
