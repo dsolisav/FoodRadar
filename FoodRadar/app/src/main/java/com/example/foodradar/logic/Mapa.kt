@@ -7,11 +7,11 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
-// TO-DO ENTREGA FINAL import org.osmdroid.config.Configuration
-// TO-DO ENTREGA FINAL import org.osmdroid.tileprovider.tilesource.TileSourceFactory
-// TO-DO ENTREGA FINAL import org.osmdroid.util.GeoPoint
-// TO-DO ENTREGA FINAL import org.osmdroid.views.MapView
-// TO-DO ENTREGA FINAL import org.osmdroid.views.overlay.Marker
+import org.osmdroid.config.Configuration
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.Marker
 import android.location.Location
 import android.os.Bundle
 import android.os.StrictMode
@@ -34,39 +34,39 @@ import com.example.foodradar.data.Funciones
 import com.example.foodradar.data.Restaurant
 import com.example.foodradar.data.RestaurantesListener
 import com.example.foodradar.data.Sesion
-// TO-DO ENTREGA FINAL import com.google.android.gms.location.FusedLocationProviderClient
-// TO-DO ENTREGA FINAL import com.google.android.gms.location.LocationCallback
-// TO-DO ENTREGA FINAL import com.google.android.gms.location.LocationRequest
-// TO-DO ENTREGA FINAL import com.google.android.gms.location.LocationResult
-// TO-DO ENTREGA FINAL import com.google.android.gms.location.LocationServices
-// TO-DO ENTREGA FINAL import com.google.android.gms.location.LocationSettingsRequest
-// TO-DO ENTREGA FINAL import com.google.android.gms.location.LocationSettingsResponse
-// TO-DO ENTREGA FINAL import com.google.android.gms.location.Priority
-// TO-DO ENTREGA FINAL import com.google.android.gms.location.SettingsClient
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.LocationSettingsResponse
+import com.google.android.gms.location.Priority
+import com.google.android.gms.location.SettingsClient
 import com.google.android.gms.tasks.Task
-// TO-DO ENTREGA FINAL import org.osmdroid.api.IMapController
-// TO-DO ENTREGA FINAL import org.osmdroid.bonuspack.routing.OSRMRoadManager
-// TO-DO ENTREGA FINAL import org.osmdroid.bonuspack.routing.Road
-// TO-DO ENTREGA FINAL import org.osmdroid.bonuspack.routing.RoadManager
-// TO-DO ENTREGA FINAL import org.osmdroid.views.overlay.Overlay
-// TO-DO ENTREGA FINAL import org.osmdroid.views.overlay.Polyline
-// TO-DO ENTREGA FINAL import org.osmdroid.views.overlay.compass.CompassOverlay
+import org.osmdroid.api.IMapController
+import org.osmdroid.bonuspack.routing.OSRMRoadManager
+import org.osmdroid.bonuspack.routing.Road
+import org.osmdroid.bonuspack.routing.RoadManager
+import org.osmdroid.views.overlay.Overlay
+import org.osmdroid.views.overlay.Polyline
+import org.osmdroid.views.overlay.compass.CompassOverlay
 
 class Mapa: AppCompatActivity(), RestaurantesListener {
 
     private lateinit var statusTextView: TextView
-    // TO-DO ENTREGA FINAL private lateinit var mFusedLocationClient: FusedLocationProviderClient
+    private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var Restaurante: String
     private lateinit var boton: Button
     private lateinit var Button: Button
-    // TO-DO ENTREGA FINAL private lateinit var mapView: MapView
-    // TO-DO ENTREGA FINAL private lateinit var compassOverlay: Overlay
-    // TO-DO ENTREGA FINAL private lateinit var mLocationRequest: LocationRequest
-    // TO-DO ENTREGA FINAL private lateinit var mLocationCallback: LocationCallback
-    // TO-DO ENTREGA FINAL private lateinit var roadManager: RoadManager
-    // TO-DO ENTREGA FINAL private var roadOverlay: Polyline? = null
-    // TO-DO ENTREGA FINAL private var userMarker: Marker? = null //Variable para almaenar marcador actual
-    // TO-DO ENTREGA FINAL private var listaMarkerRest = mutableListOf<Marker>() //Almacenar los marcadores de restaurantes
+    private lateinit var mapView: MapView
+    private lateinit var compassOverlay: Overlay
+    private lateinit var mLocationRequest: LocationRequest
+    private lateinit var mLocationCallback: LocationCallback
+    private lateinit var roadManager: RoadManager
+    private var roadOverlay: Polyline? = null
+    private var userMarker: Marker? = null //Variable para almaenar marcador actual
+    private var listaMarkerRest = mutableListOf<Marker>() //Almacenar los marcadores de restaurantes
     private val getLocationSettings = registerForActivityResult(
         ActivityResultContracts.StartIntentSenderForResult()
     ) { result ->
@@ -85,7 +85,7 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
         /*enableEdgeToEdge()*/
 
         //Inicializar el contexto para osmdroid
-        // TO-DO ENTREGA FINAL Configuration.getInstance().load(this, getSharedPreferences("osmdroid", MODE_PRIVATE))
+        Configuration.getInstance().load(this, getSharedPreferences("osmdroid", MODE_PRIVATE))
 
         setContentView(R.layout.mapa)
 
@@ -94,25 +94,24 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
         val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-        // TO-DO ENTREGA FINAL mapView = findViewById(R.id.osmMap)
-        // TO-DO ENTREGA FINAL roadManager = OSRMRoadManager(this, "ANDROID")
+        mapView = findViewById(R.id.osmMap)
+        roadManager = OSRMRoadManager(this, "ANDROID")
 
         val algo = Data.MY_PERMISSION_LOCATION_CODE
 
         statusTextView = findViewById(R.id.textView5)
 
-        // TO-DO ENTREGA FINAL mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        // TO-DO ENTREGA FINAL mLocationRequest = createLocationRequest()
-        // TO-DO ENTREGA FINAL
-//        mLocationCallback = object : LocationCallback() {
-//            override fun onLocationResult(locationResult: LocationResult) {
-//                val location = locationResult.lastLocation
-//                Log.i("LOCATION", "Location update in the callback: $location")
-//                if (location != null) {
-//                    actualizarUbicacion(location)
-//                }
-//            }
-//        }
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        mLocationRequest = createLocationRequest()
+        mLocationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult) {
+                val location = locationResult.lastLocation
+                Log.i("LOCATION", "Location update in the callback: $location")
+                if (location != null) {
+                    actualizarUbicacion(location)
+                }
+            }
+        }
 
 
         // Recibir el tipo de restaurante seleccionado
@@ -144,13 +143,12 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
 
         boton.setOnClickListener {
             //Ubicar el mapa en la ubicación del usuario
-            // TO-DO ENTREGA FINAL
-//            mapView.controller.setZoom(15.0)
-//            mapView.controller.setCenter(Data.latitud?.let { it1 -> Data.longitud?.let { it2 ->
-//                GeoPoint(it1,
-//                    it2
-//                )
-//            } })
+           mapView.controller.setZoom(15.0)
+           mapView.controller.setCenter(Data.latitud?.let { it1 -> Data.longitud?.let { it2 ->
+               GeoPoint(it1,
+                   it2
+               )
+           } })
 
         }
 
@@ -180,99 +178,97 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
     }
 
     private fun actualizarUbicacion(location: Location) {
-        // TO-DO ENTREGA FINAL val userLocation = GeoPoint(location.latitude, location.longitude)
+        val userLocation = GeoPoint(location.latitude, location.longitude)
         Data.latitud = location.latitude
         Data.longitud = location.longitude
 
-        // TO-DO ENTREGA FINAL val waypoints = ArrayList<GeoPoint>()
-        // TO-DO ENTREGA FINAL mapView.overlays.remove(roadOverlay) // Elimina el overlay de la ruta
-        // TO-DO ENTREGA FINAL mapView.invalidate() // Refresca el mapa
+        val waypoints = ArrayList<GeoPoint>()
+        mapView.overlays.remove(roadOverlay) // Elimina el overlay de la ruta
+        mapView.invalidate() // Refresca el mapa
 
 
-        // TO-DO ENTREGA FINAL waypoints.add(userLocation)
+        waypoints.add(userLocation)
 
 
-        // TO-DO ENTREGA FINAL
-//        if (userMarker != null) {
-//            userMarker?.remove(mapView)
-//        }
+        if (userMarker != null) {
+            userMarker?.remove(mapView)
+        }
 
         // Añadir un marcador en la ubicación del usuario
-        // TO-DO ENTREGA FINAL userMarker = Marker(mapView)
-        // TO-DO ENTREGA FINAL userMarker?.position = userLocation
-        // TO-DO ENTREGA FINAL userMarker?.icon = crearMarcador(Color.RED)
-        // TO-DO ENTREGA FINAL userMarker?.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-        // TO-DO ENTREGA FINAL userMarker?.title = "Tu ubicación"
-        // TO-DO ENTREGA FINAL userMarker?.alpha = 1.0f
-        // TO-DO ENTREGA FINAL mapView.overlays.add(userMarker)
+        userMarker = Marker(mapView)
+        userMarker?.position = userLocation
+        userMarker?.icon = crearMarcador(Color.RED)
+        userMarker?.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+        userMarker?.title = "Tu ubicación"
+        userMarker?.alpha = 1.0f
+        mapView.overlays.add(userMarker)
 
         // Obtener lista ordenada por proximidad
         val sortedRestaurants = getRestaurantsByProximity(location, Data.RESTAURANT_ROUTE)
 
         // Agregar los restaurantes como puntos en la lista
         sortedRestaurants.forEach { restaurant ->
-            // TO-DO ENTREGA FINAL if(Data.RESTAURANT_LIST.contains(restaurant)){
-            // TO-DO ENTREGA FINAL waypoints.add(GeoPoint(restaurant.latitud,restaurant.longitud))
-            // TO-DO ENTREGA FINAL }
+            if(Data.RESTAURANT_LIST.contains(restaurant)){
+                waypoints.add(GeoPoint(restaurant.latitud,restaurant.longitud))
+            }
         }
 
-        // TO-DO ENTREGA FINAL val road = roadManager.getRoad(waypoints)
+        val road = roadManager.getRoad(waypoints)
 
-        // TO-DO ENTREGA FINAL if (road.mStatus != Road.STATUS_OK) {
-        // TO-DO ENTREGA FINAL Toast.makeText(this, "Error al obtener la ruta", Toast.LENGTH_SHORT).show()
-        // TO-DO ENTREGA FINAL     return
-        // TO-DO ENTREGA FINAL }
+        if (road.mStatus != Road.STATUS_OK) {
+            Toast.makeText(this, "Error al obtener la ruta", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         // Calcular tiempo estimado de la ruta
-        // TO-DO ENTREGA FINAL val duracion = road.mDuration
-        // TO-DO ENTREGA FINAL val totalDurationInMinutes = duracion / 60
-        // TO-DO ENTREGA FINAL val redondeado = kotlin.math.round(totalDurationInMinutes)
+        val duracion = road.mDuration
+        val totalDurationInMinutes = duracion / 60
+        val redondeado = kotlin.math.round(totalDurationInMinutes)
 
-        // TO-DO ENTREGA FINAL statusTextView.text = "Duracion Estimada Recorrido: $redondeado minutos"
+        statusTextView.text = "Duracion Estimada Recorrido: $redondeado minutos"
         statusTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
 
         // Dibujar la ruta en el mapa
-        // TO-DO ENTREGA FINAL
-//        if (waypoints.size > 1){
-//            if (mapView != null) {
-//                roadOverlay?.let {mapView.overlays.remove(it) }
-//                roadOverlay = RoadManager.buildRoadOverlay(road)
-//                roadOverlay?.outlinePaint?.color = Color.MAGENTA
-//                roadOverlay?.outlinePaint?.strokeWidth = 10f
-//                mapView.overlays.add(roadOverlay)
-//
-//                //Refrescar el mapa
-//                mapView.invalidate()
-//            }
-//        }
+        if (waypoints.size > 1){
+            if (mapView != null) {
+                roadOverlay?.let {mapView.overlays.remove(it) }
+                roadOverlay = RoadManager.buildRoadOverlay(road)
+                roadOverlay?.outlinePaint?.color = Color.MAGENTA
+                roadOverlay?.outlinePaint?.strokeWidth = 10f
+                mapView.overlays.add(roadOverlay)
+
+                //Refrescar el mapa
+                mapView.invalidate()
+            }
+        }
 
 
         boton.setOnClickListener {
             //Ubicar el mapa en la ubicación del usuario
-            // TO-DO ENTREGA FINAL mapView.controller.setZoom(15.0)
-            // TO-DO ENTREGA FINAL mapView.controller.setCenter(waypoints[0])
+            mapView.controller.setZoom(15.0)
+            mapView.controller.setCenter(waypoints[0])
 
         }
     }
 
 
     private fun checkLocationSettings() {
-        // TO-DO ENTREGA FINAL val builder = LocationSettingsRequest.Builder().addLocationRequest(mLocationRequest)
-        // TO-DO ENTREGA FINAL val client: SettingsClient = LocationServices.getSettingsClient(this)
-        // TO-DO ENTREGA FINAL val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
-        // TO-DO ENTREGA FINAL task.addOnSuccessListener {
-        // TO-DO ENTREGA FINAL     Log.i("LOCATION", "GPS is ON")
-        // TO-DO ENTREGA FINAL     var settingsOK = true
-        // TO-DO ENTREGA FINAL     startLocationUpdates()
-        // TO-DO ENTREGA FINAL }
+        val builder = LocationSettingsRequest.Builder().addLocationRequest(mLocationRequest)
+        val client: SettingsClient = LocationServices.getSettingsClient(this)
+        val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
+        task.addOnSuccessListener {
+            Log.i("LOCATION", "GPS is ON")
+            var settingsOK = true
+            startLocationUpdates()
+        }
     }
 
 
-    // TO-DO ENTREGA FINAL private fun createLocationRequest(): LocationRequest =
-    // TO-DO ENTREGA FINAL     // New builder
-    // TO-DO ENTREGA FINAL     LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 2000).apply {
-    // TO-DO ENTREGA FINAL         setMinUpdateIntervalMillis(5000)
-    // TO-DO ENTREGA FINAL     }.build()
+    private fun createLocationRequest(): LocationRequest =
+        // New builder
+        LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 2000).apply {
+            setMinUpdateIntervalMillis(5000)
+        }.build()
 
 
     private fun startLocationUpdates() {
@@ -351,20 +347,21 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
 
-            // TO-DO ENTREGA FINAL mFusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
-            // TO-DO ENTREGA FINAL     if (location != null) {
-            // TO-DO ENTREGA FINAL         buscarRestaurante(location)
-            // TO-DO ENTREGA FINAL         showPermissionStatus(true)
-            // TO-DO ENTREGA FINAL     } else {
-            // TO-DO ENTREGA FINAL         statusTextView.text = "No se pudo obtener la ubicación."
-            // TO-DO ENTREGA FINAL         statusTextView.setTextColor(
-            // TO-DO ENTREGA FINAL             ContextCompat.getColor(
-            // TO-DO ENTREGA FINAL                 this,
-            // TO-DO ENTREGA FINAL                 android.R.color.holo_red_dark
-            // TO-DO ENTREGA FINAL             )
-            // TO-DO ENTREGA FINAL         )
-            // TO-DO ENTREGA FINAL     }
-            // TO-DO ENTREGA FINAL }
+            // TO-DO ENTREGA FINAL
+            mFusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
+                if (location != null) {
+                    buscarRestaurante(location)
+                    showPermissionStatus(true)
+                } else {
+                    statusTextView.text = "No se pudo obtener la ubicación."
+                    statusTextView.setTextColor(
+                        ContextCompat.getColor(
+                            this,
+                            android.R.color.holo_red_dark
+                        )
+                    )
+                }
+            }
         } else {
             // Mostrar estado de permiso denegado
             showPermissionStatus(false)
@@ -374,7 +371,7 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
     @SuppressLint("SetTextI18n")
     fun buscarRestaurante(location: Location) {
 
-        // TO-DO ENTREGA FINAL val userLocation = GeoPoint(location.latitude, location.longitude)
+        val userLocation = GeoPoint(location.latitude, location.longitude)
         Data.latitud = location.latitude
         Data.longitud = location.longitude
         val restaurantes = Data.RESTAURANT_LIST
@@ -382,56 +379,56 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
         botonHabilitado()
 
         // Eliminar los marcadores anteriores (si existen)
-        // TO-DO ENTREGA FINAL for (marker in listaMarkerRest) {
-        // TO-DO ENTREGA FINAL     mapView.overlays.remove(marker)
-        // // TO-DO ENTREGA FINAL TO-DO ENTREGA FINAL }
-        // // TO-DO ENTREGA FINAL TO-DO ENTREGA FINAL listaMarkerRest.clear() // Limpiar // TO-DO ENTREGA FINAL la lista de marcadores
+        for (marker in listaMarkerRest) {
+            mapView.overlays.remove(marker)
+        }
+        listaMarkerRest.clear() // Limpiar la lista de marcadores
 
-        // TO-DO ENTREGA FINAL userMarker?.remove(mapView)
+        userMarker?.remove(mapView)
 
-        // TO-DO ENTREGA FINAL mapView.setTileSource(TileSourceFactory.MAPNIK)
-        // TO-DO ENTREGA FINAL mapView.setBuiltInZoomControls(true)
-        // TO-DO ENTREGA FINAL mapView.setMultiTouchControls(true)
+        mapView.setTileSource(TileSourceFactory.MAPNIK)
+        mapView.setBuiltInZoomControls(true)
+        mapView.setMultiTouchControls(true)
 
         //Ubicar el mapa en la ubicación del usuario
-        // TO-DO ENTREGA FINAL mapView.controller.setZoom(15.0)
-        // TO-DO ENTREGA FINAL mapView.controller.setCenter(userLocation)
+        mapView.controller.setZoom(15.0)
+        mapView.controller.setCenter(userLocation)
 
         // Añadir un marcador en la ubicación del usuario
-        // TO-DO ENTREGA FINAL userMarker = Marker(mapView)
-        // TO-DO ENTREGA FINAL userMarker?.position = userLocation
-        // TO-DO ENTREGA FINAL userMarker?.icon = crearMarcador(Color.RED)
-        // TO-DO ENTREGA FINAL userMarker?.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-        // TO-DO ENTREGA FINAL userMarker?.title = "Tu ubicación"
-        // TO-DO ENTREGA FINAL userMarker?.alpha = 1.0f
-        // TO-DO ENTREGA FINAL mapView.overlays.add(userMarker)
+        userMarker = Marker(mapView)
+        userMarker?.position = userLocation
+        userMarker?.icon = crearMarcador(Color.RED)
+        userMarker?.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+        userMarker?.title = "Tu ubicación"
+        userMarker?.alpha = 1.0f
+        mapView.overlays.add(userMarker)
 
-        // TO-DO ENTREGA FINAL compassOverlay = CompassOverlay(this, mapView)
-        // TO-DO ENTREGA FINAL (compassOverlay as CompassOverlay).enableCompass()
-        // TO-DO ENTREGA FINAL mapView.overlays.add(compassOverlay)
+        compassOverlay = CompassOverlay(this, mapView)
+        (compassOverlay as CompassOverlay).enableCompass()
+        mapView.overlays.add(compassOverlay)
 
 
         for (restaurant in restaurantes) {
-            // TO-DO ENTREGA FINAL val markerRestaurante = Marker(mapView)
-            // TO-DO ENTREGA FINAL val point = GeoPoint(restaurant.latitud, restaurant.longitud)
-            // TO-DO ENTREGA FINAL markerRestaurante.position = point
-            // TO-DO ENTREGA FINAL markerRestaurante.title = restaurant.nombre
-            // TO-DO ENTREGA FINAL markerRestaurante.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-            // TO-DO ENTREGA FINAL markerRestaurante.subDescription =
-            // TO-DO ENTREGA FINAL     "Calificacion de " + restaurant.calificacion.toString()
+            val markerRestaurante = Marker(mapView)
+            val point = GeoPoint(restaurant.latitud, restaurant.longitud)
+            markerRestaurante.position = point
+            markerRestaurante.title = restaurant.nombre
+            markerRestaurante.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+            markerRestaurante.subDescription =
+                "Calificacion de " + restaurant.calificacion.toString()
 
 
-            // TO-DO ENTREGA FINAL markerRestaurante.alpha =
-            // TO-DO ENTREGA FINAL     if (Data.RESTAURANT_ROUTE.contains(restaurant)) 3.0f else 0.09f
+            markerRestaurante.alpha =
+                if (Data.RESTAURANT_ROUTE.contains(restaurant)) 3.0f else 0.09f
 
             // Añadir el marcador al mapa
-            // TO-DO ENTREGA FINAL mapView.overlays.add(markerRestaurante)
-            // TO-DO ENTREGA FINAL markerRestaurante.showInfoWindow()
-            // TO-DO ENTREGA FINAL listaMarkerRest.add(markerRestaurante)
+            mapView.overlays.add(markerRestaurante)
+            markerRestaurante.showInfoWindow()
+            listaMarkerRest.add(markerRestaurante)
         }
 
         //Refrescar el mapa
-        // TO-DO ENTREGA FINAL mapView.invalidate()
+        mapView.invalidate()
     }
 
 
@@ -497,9 +494,9 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
 
     override fun onResume() {
         super.onResume()
-        // TO-DO ENTREGA FINAL mapView.onResume()
-        // TO-DO ENTREGA FINAL val mapController: IMapController = mapView.controller
-        // TO-DO ENTREGA FINAL mapController.setZoom(18.0)
+        mapView.onResume()
+        val mapController: IMapController = mapView.controller
+        mapController.setZoom(18.0)
 
         // Inicializa el callback en onResume para que se reinicie la actividad
         checkLocationSettings()
@@ -518,11 +515,11 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
     override fun onPause() {
         super.onPause()
         stopLocationUpdates()
-        // TO-DO ENTREGA FINAL mapView.onPause()
+        mapView.onPause()
     }
 
     private fun stopLocationUpdates() {
-        // TO-DO ENTREGA FINAL mFusedLocationClient.removeLocationUpdates(mLocationCallback)
+        mFusedLocationClient.removeLocationUpdates(mLocationCallback)
     }
 
 

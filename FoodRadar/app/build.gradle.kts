@@ -49,6 +49,13 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation("androidx.biometric:biometric:1.2.0-alpha04")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    implementation(libs.gson)
+    /*implementation(libs.androidx.appcompat.v131)*/
+    implementation("org.osmdroid:osmdroid-android:6.1.14")
+    implementation("com.github.MKergall:osmbonuspack:6.9.0")
+
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
