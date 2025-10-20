@@ -279,7 +279,7 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            // TO-DO ENTREGA FINAL mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, null)
+            mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, null)
         }
     }
 
@@ -347,7 +347,6 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
 
-            // TO-DO ENTREGA FINAL
             mFusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
                 if (location != null) {
                     buscarRestaurante(location)
