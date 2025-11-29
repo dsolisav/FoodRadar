@@ -44,6 +44,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "148968389973-39lpm33d68glj7o0erpodsv10el6uajj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodradar",
+            "certificate_hash": "4046190d35e2605aa44a22f8ffee843f186c4ecc"
+          }
+        },
+        {
           "client_id": "148968389973-p04qe07qru6rjtkcvu127rqc1vfe168p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -2,6 +2,7 @@ package com.example.foodradar.logic
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
@@ -16,16 +17,20 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.SearchView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.lifecycleScope
 import com.example.foodradar.R
 import com.example.foodradar.data.Data
 import com.example.foodradar.data.Funciones
+import com.example.foodradar.data.GeminiService
 import com.example.foodradar.data.Sesion
 import com.example.foodradar.data.Restaurant
 import com.example.foodradar.data.RestaurantesListener
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 class Paradas: AppCompatActivity(), RestaurantesListener {
@@ -35,6 +40,7 @@ class Paradas: AppCompatActivity(), RestaurantesListener {
     private  lateinit var mFusedLocationClient: FusedLocationProviderClient
     lateinit var listView: ListView
     private lateinit var seleccion: Button
+    private lateinit var botonIA: Button
 
 
 
@@ -48,6 +54,7 @@ class Paradas: AppCompatActivity(), RestaurantesListener {
         setSupportActionBar(toolbar)
 
         seleccion = findViewById(R.id.botonCrearRuta)
+        botonIA = findViewById(R.id.botonRecomendacionIA)
         listView = findViewById<ListView>(R.id.lista)
         statusTextView = findViewById(R.id.Ubicacion)
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -65,6 +72,39 @@ class Paradas: AppCompatActivity(), RestaurantesListener {
             val intent = Intent(this, Mapa::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
             startActivity(intent)
+        }
+
+        botonIA.setOnClickListener {
+            pedirRecomendacionIA()
+        }
+    }
+
+    private fun pedirRecomendacionIA() {
+        val prompt = GeminiService.generarPromptRecomendacion()
+        
+        if (prompt.isEmpty()) {
+            Toast.makeText(this, "No hay restaurantes disponibles", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Mostrar diálogo de carga
+        val loadingDialog = AlertDialog.Builder(this)
+            .setTitle("🤖 FoodRadar AI")
+            .setMessage("Analizando restaurantes...")
+            .setCancelable(false)
+            .create()
+        loadingDialog.show()
+
+        lifecycleScope.launch {
+            val recomendacion = GeminiService.getRecomendacion(prompt)
+            loadingDialog.dismiss()
+            
+            // Mostrar resultado
+            AlertDialog.Builder(this@Paradas)
+                .setTitle("🤖 Recomendación IA")
+                .setMessage(recomendacion)
+                .setPositiveButton("¡Gracias!") { dialog, _ -> dialog.dismiss() }
+                .show()
         }
     }
 
