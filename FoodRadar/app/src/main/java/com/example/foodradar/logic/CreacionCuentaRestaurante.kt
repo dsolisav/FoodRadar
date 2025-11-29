@@ -56,7 +56,7 @@ class CreacionCuentaRestaurante : AppCompatActivity() {
         ubicacion = findViewById(R.id.Ubicacion)
         botonMapa = findViewById(R.id.BotonMapa)
 
-
+        
         ubicacion.isEnabled = false
         ubicacion.isClickable = false
         Log.d("TILIN", "en Oncreate Latitud: ${Data.latitud}, Longitud: ${Data.longitud}")

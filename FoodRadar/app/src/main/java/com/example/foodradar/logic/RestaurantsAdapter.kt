@@ -43,19 +43,23 @@ class RestaurantsAdapter(context: Context?, private val restaurantes: List<Resta
         }
 
         perfilButton.setOnClickListener {
-            // TO-DO ENTREGA FINAL val intent = Intent(context, PerfilRestaurante::class.java)
-            // TO-DO ENTREGA FINAL intent.putExtra("restaurantId", restaurante?.id)
-            // TO-DO ENTREGA FINAL intent.putExtra("restaurantName", restaurante?.nombre)
-            // TO-DO ENTREGA FINAL intent.putExtra("puntaje",restaurante?.calificacion)
-            // TO-DO ENTREGA FINAL intent.putExtra("latitud", restaurante?.latitud)
-            // TO-DO ENTREGA FINAL intent.putExtra("longitud",restaurante?.longitud)
-            // TO-DO ENTREGA FINAL intent.putExtra("categoria", restaurante?.categoria)
-            // TO-DO ENTREGA FINAL context.startActivity(intent)
+            val intent = Intent(context, PerfilRestaurante::class.java)
+            intent.putExtra("restaurantId", restaurante?.id)
+            intent.putExtra("restaurantName", restaurante?.nombre)
+            intent.putExtra("puntaje",restaurante?.calificacion)
+            intent.putExtra("latitud", restaurante?.latitud)
+            intent.putExtra("longitud",restaurante?.longitud)
+            intent.putExtra("categoria", restaurante?.categoria)
+            context.startActivity(intent)
         }
 
+        // Siempre actualizar el estado del botón según si está en la ruta o no
         if (Data.RESTAURANT_ROUTE.contains(restaurante)){
-                añadirButton.setBackgroundColor(Color.GREEN)
+            añadirButton.setBackgroundColor(Color.GREEN)
             añadirButton.text = "Cancelar"
+        } else {
+            añadirButton.setBackgroundColor(Color.RED)
+            añadirButton.text = "Añadir"
         }
 
 
@@ -79,4 +83,6 @@ class RestaurantsAdapter(context: Context?, private val restaurantes: List<Resta
 
         return view
     }
+
+
 }

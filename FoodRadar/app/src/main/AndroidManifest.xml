@@ -2,8 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +20,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FoodRadar">
+        android:theme="@style/Theme.foodradar">
         <activity
             android:name=".logic.CreacionCuentaRestaurante"
             android:exported="false" />
@@ -22,28 +29,28 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-<!--        <activity-->
-<!--            android:name=".logic.PerfilRestaurante"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".logic.CalificarRestaurante"-->
-<!--            android:exported="false"-->
-<!--            android:windowSoftInputMode="adjustNothing" />-->
+        <activity
+            android:name=".logic.PerfilRestaurante"
+            android:exported="false" />
+        <activity
+            android:name=".logic.CalificarRestaurante"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".logic.MiRestaurante"
             android:exported="false" />
         <activity
             android:name=".logic.MapaRestaurante"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".logic.Perfil"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".logic.EditarCuenta"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".logic.CambiarContrasena"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".logic.Perfil"
+            android:exported="false" />
+        <activity
+            android:name=".logic.EditarCuenta"
+            android:exported="false" />
+        <activity
+            android:name=".logic.CambiarContrasena"
+            android:exported="false" />
         <activity
             android:name=".logic.CreacionCuenta"
             android:exported="true" />

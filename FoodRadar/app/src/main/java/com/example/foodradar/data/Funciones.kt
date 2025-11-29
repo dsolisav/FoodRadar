@@ -5,9 +5,9 @@ import android.content.Context
 import android.location.Location
 import android.util.Log
 import com.example.foodradar.data.Data.Companion.RADIUS_OF_EARTH_KM
-// TO-DO ENTREGA FINAL import com.example.foodradar.logic.Mapa
-// TO-DO ENTREGA FINAL import com.example.foodradar.logic.Paradas
-// TO-DO ENTREGA FINAL import com.example.foodradar.logic.RestaurantsAdapter
+import com.example.foodradar.logic.Mapa
+import com.example.foodradar.logic.Paradas
+import com.example.foodradar.logic.RestaurantsAdapter
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import org.json.JSONObject
@@ -259,16 +259,15 @@ class Funciones {
             }
         }
 
-        // TO-DO ENTREGA FINAL
-        // fun createNewComment(comentario : Comentario): JSONObject {
-        //     return JSONObject().apply {
-        //         put("nombre_completo", comentario.nombre_completo)
-        //         put("calificacion", comentario.calificacion)
-        //         put("fecha", comentario.fecha)
-        //         put("descripcion", comentario.descripcion)
+        fun createNewComment(comentario : Comentario): JSONObject {
+            return JSONObject().apply {
+                put("nombre_completo", comentario.nombre_completo)
+                put("calificacion", comentario.calificacion)
+                put("fecha", comentario.fecha)
+                put("descripcion", comentario.descripcion)
 
-        //     }
-        // }
+            }
+        }
 
         //Verificar si el archivo ya fue copiado
         fun isFileCopiedUsers(context: Context): Boolean {

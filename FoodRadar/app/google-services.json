@@ -8,12 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:148968389973:android:487b54896ed97df3cf43dc",
+        "mobilesdk_app_id": "1:148968389973:android:ae3357d5fdb6fac9cf43dc",
         "android_client_info": {
-          "package_name": "com.example.foodradar"
+          "package_name": "com.example.camino_gourmet"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "148968389973-dceondi56t21necqhrbcodp3gqnmjpn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC3Gxpa5LlRmkbRG0oP4CLvnUFEGF2bobY"
@@ -21,7 +26,49 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148968389973-dceondi56t21necqhrbcodp3gqnmjpn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148968389973:android:487b54896ed97df3cf43dc",
+        "android_client_info": {
+          "package_name": "com.example.foodradar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148968389973-p04qe07qru6rjtkcvu127rqc1vfe168p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodradar",
+            "certificate_hash": "6c8e1b7dcf6771173c4faf65943bc36e10bff164"
+          }
+        },
+        {
+          "client_id": "148968389973-dceondi56t21necqhrbcodp3gqnmjpn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3Gxpa5LlRmkbRG0oP4CLvnUFEGF2bobY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148968389973-dceondi56t21necqhrbcodp3gqnmjpn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

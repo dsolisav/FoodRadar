@@ -105,8 +105,9 @@ class MapaRestaurante: AppCompatActivity() {
         // Runnable para detectar el long press
         val longPressRunnable = Runnable {
             isLongPress = true
+
             longPressMarker?.let {
-               mapView.overlays.remove(it)
+                mapView.overlays.remove(it)
             }
 
             val point = mapView.projection.fromPixels(x.toInt(), y.toInt()) as GeoPoint
@@ -124,23 +125,23 @@ class MapaRestaurante: AppCompatActivity() {
         }
 
         // Configura el listener de toque en el mapa
-       mapView.setOnTouchListener { _, event ->
-           when (event.action) {
-               MotionEvent.ACTION_DOWN -> {
-                   // Guarda las coordenadas del toque
-                   x = event.x
-                   y = event.y
-                   isLongPress = false
-                   // Comienza a contar el tiempo de presión
-                   handler.postDelayed(longPressRunnable, 2000) // Detecta después de 2 segundos
-               }
-               MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                   // Cancela el long press si el usuario levanta el dedo antes de 1 segundo
-                   handler.removeCallbacks(longPressRunnable)
-               }
-           }
-           // Deja que el mapa siga respondiendo al movimiento (retorna true)
-           return@setOnTouchListener false
+        mapView.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    // Guarda las coordenadas del toque
+                    x = event.x
+                    y = event.y
+                    isLongPress = false
+                    // Comienza a contar el tiempo de presión
+                    handler.postDelayed(longPressRunnable, 2000) // Detecta después de 2 segundos
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    // Cancela el long press si el usuario levanta el dedo antes de 1 segundo
+                    handler.removeCallbacks(longPressRunnable)
+                }
+            }
+            // Deja que el mapa siga respondiendo al movimiento (retorna true)
+            return@setOnTouchListener false
         }
 
         // Habilita el desplazamiento y zoom con gestos
@@ -155,85 +156,86 @@ class MapaRestaurante: AppCompatActivity() {
            }
          */
 
-       boton.setOnClickListener {
-           // Enviar la direccion del restaurante para luego convertir en longitud y latitud
-           val intent = Intent()
-           intent.putExtra("latitud", Data.latitud)
-           intent.putExtra("longitud", Data.longitud)
-           setResult(RESULT_OK, intent) // Envía los datos de vuelta
-           finish() // Finaliza la actividad para regresar a la principal
+
+        boton.setOnClickListener {
+            // Enviar la direccion del restaurante para luego convertir en longitud y latitud
+            val intent = Intent()
+            intent.putExtra("latitud", Data.latitud)
+            intent.putExtra("longitud", Data.longitud)
+            setResult(RESULT_OK, intent) // Envía los datos de vuelta
+            finish() // Finaliza la actividad para regresar a la principal
 
 
-       }
+        }
 
     }
 
     private fun getAddressFromCoordinates(latitude: Double, longitude: Double) {
-       val geocoder = Geocoder(this, Locale.getDefault())
-       try {
-           val addresses = geocoder.getFromLocation(latitude, longitude, 1)
-           if (addresses != null) {
-               if (addresses.isNotEmpty()) {
-                   val address = addresses[0]
-                   val addressText = StringBuilder()
-                   if (address != null) {
-                       for (i in 0..address.maxAddressLineIndex) {
-                           addressText.append(address.getAddressLine(i)).append("\n")
-                       }
-                   }
-                   // Asignar el texto generado al EditText
-                   directionText.setText(addressText.toString())
-               }
-           }
-       } catch (e: Exception) {
-           e.printStackTrace()
-           Toast.makeText(this, "No se pudo obtener la dirección", Toast.LENGTH_SHORT).show()
-       }
+        val geocoder = Geocoder(this, Locale.getDefault())
+        try {
+            val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+            if (addresses != null) {
+                if (addresses.isNotEmpty()) {
+                    val address = addresses[0]
+                    val addressText = StringBuilder()
+                    if (address != null) {
+                        for (i in 0..address.maxAddressLineIndex) {
+                            addressText.append(address.getAddressLine(i)).append("\n")
+                        }
+                    }
+                    // Asignar el texto generado al EditText
+                    directionText.setText(addressText.toString())
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(this, "No se pudo obtener la dirección", Toast.LENGTH_SHORT).show()
+        }
     }
 
 
 
     // Función para buscar una dirección y agregar el marcador sin borrar el marcador actual
     private fun buscarDireccion(direccion: String) {
-       try {
+        try {
             // Buscar la dirección usando el Geocoder
-           val resultados = geocoder.getFromLocationName(direccion, 1)
-           if (!resultados.isNullOrEmpty()) {
-               val location = resultados[0]
-               val destino = GeoPoint(location.latitude, location.longitude)
-               Data.latitud = location.latitude
-               Data.longitud = location.longitude
+            val resultados = geocoder.getFromLocationName(direccion, 1)
+            if (!resultados.isNullOrEmpty()) {
+                val location = resultados[0]
+                val destino = GeoPoint(location.latitude, location.longitude)
+                Data.latitud = location.latitude
+                Data.longitud = location.longitude
 
-               // Borrar el marcador del destino anterior, si existe
-               if (direccionMarker != null) {
-                   mapView.overlays.remove(direccionMarker)
-               }
+                // Borrar el marcador del destino anterior, si existe
+                if (direccionMarker != null) {
+                    mapView.overlays.remove(direccionMarker)
+                }
 
-               // Borrar el marcador del long press anterior, si existe
-               if (longPressMarker !=null){
-                   mapView.overlays.remove(longPressMarker)
-               }
+                // Borrar el marcador del long press anterior, si existe
+                if (longPressMarker !=null){
+                    mapView.overlays.remove(longPressMarker)
+                }
 
-               // Crear y agregar un nuevo marcador para el destino
-               direccionMarker = Marker(mapView).apply {
-                   position = destino
-                   setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-                   title = direccion
-               }
-               mapView.overlays.add(direccionMarker)
+                // Crear y agregar un nuevo marcador para el destino
+                direccionMarker = Marker(mapView).apply {
+                    position = destino
+                    setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                    title = direccion
+                }
+                mapView.overlays.add(direccionMarker)
 
-               // Mover la cámara a la nueva ubicación del destino
-               mapView.controller.animateTo(destino)
-               mapView.controller.setZoom(15.0)
+                // Mover la cámara a la nueva ubicación del destino
+                mapView.controller.animateTo(destino)
+                mapView.controller.setZoom(15.0)
 
-               // Refrescar el mapa
-               mapView.invalidate()
-           } else {
-               Toast.makeText(this, "Dirección no encontrada", Toast.LENGTH_SHORT).show()
-           }
-       } catch (e: IOException) {
-           Toast.makeText(this, "Error al buscar la dirección", Toast.LENGTH_SHORT).show()
-       }
+                // Refrescar el mapa
+                mapView.invalidate()
+            } else {
+                Toast.makeText(this, "Dirección no encontrada", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: IOException) {
+            Toast.makeText(this, "Error al buscar la dirección", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun pedirPermiso(context: Activity, permiso: String,justificacion: String, idCode: Int) {
@@ -258,62 +260,60 @@ class MapaRestaurante: AppCompatActivity() {
             }
         }
     }
-   override fun onRequestPermissionsResult(requestCode: Int,permissions: Array<String>,grantResults: IntArray) {
-       super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-       when (requestCode) {
-           requestCode -> {
-               // Si el permiso fue cancelado, el arreglo de permisos esta vacio
-               if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                   // El permiso fue concedido, usar ubicacion
-                   setLocation()
-               } else {
-                   // Mostrar estado de permiso denegado
-                   showPermissionStatus(false)
-               }
-               return
-           }
 
-           else -> {
-               // Ignore all other requests.
-           }
-       }
-   }
+    override fun onRequestPermissionsResult(requestCode: Int,permissions: Array<String>,grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            requestCode -> {
+                // Si el permiso fue cancelado, el arreglo de permisos esta vacio
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // El permiso fue concedido, usar ubicacion
+                    setLocation()
+                } else {
+                    // Mostrar estado de permiso denegado
+                    showPermissionStatus(false)
+                }
+                return
+            }
+
+            else -> {
+                // Ignore all other requests.
+            }
+        }
+    }
 
 
     private fun setLocation() {
         // Verifica permisos antes de intentar acceder a la ubicación
-        // TO-DO ENTREGA FINAL
-       if (ContextCompat.checkSelfPermission(
-               this,
-               Manifest.permission.ACCESS_FINE_LOCATION
-           ) == PackageManager.PERMISSION_GRANTED
-       ) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
 
-           mFusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
-               if (location != null) {
-                   ubicarRestaurante(location)
-                   showPermissionStatus(true)
-               }
-           }
-       } else {
-           // Mostrar estado de permiso denegado
-           showPermissionStatus(false)
-       }
+            mFusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
+                if (location != null) {
+                    ubicarRestaurante(location)
+                    showPermissionStatus(true)
+                }
+            }
+        } else {
+            // Mostrar estado de permiso denegado
+            showPermissionStatus(false)
+        }
     }
 
     private fun showPermissionRationale() {
-        // TO-DO ENTREGA FINAL
-       Toast.makeText(
-           this, "Servicios reducidos", Toast.LENGTH_LONG).show()
+        Toast.makeText(
+            this, "Servicios reducidos", Toast.LENGTH_LONG).show()
     }
 
     private fun showPermissionStatus(granted: Boolean) {
-        // TO-DO ENTREGA FINAL
-       if (!granted) {
-           boton.visibility = View.GONE
-       } else {
-           boton.visibility = View.VISIBLE
-       }
+        if (!granted) {
+            boton.visibility = View.GONE
+        } else {
+            boton.visibility = View.VISIBLE
+        }
     }
 
     private fun ubicarRestaurante(location: Location) {
@@ -324,20 +324,19 @@ class MapaRestaurante: AppCompatActivity() {
         val savedLon = Data.longitud
 
         if (savedLat != null && savedLon != null) {
-            // TO-DO ENTREGA FINAL
-           val savedLocation = GeoPoint(savedLat, savedLon)
-           mapView.controller.setCenter(savedLocation)
-           mapView.controller.setZoom(15.0)
+            val savedLocation = GeoPoint(savedLat, savedLon)
+            mapView.controller.setCenter(savedLocation)
+            mapView.controller.setZoom(15.0)
 
-           // Añadir marcador si es necesario
-           savedMarker = Marker(mapView)
-           savedMarker!!.position = savedLocation
-           savedMarker!!.icon = crearMarcador(Color.BLUE) // Cambia el color del marcador si es necesario
-           savedMarker!!.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-           savedMarker!!.title = "Ubicación guardada"
-           mapView.overlays.add(savedMarker)
+            // Añadir marcador si es necesario
+            savedMarker = Marker(mapView)
+            savedMarker!!.position = savedLocation
+            savedMarker!!.icon = crearMarcador(Color.BLUE) // Cambia el color del marcador si es necesario
+            savedMarker!!.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+            savedMarker!!.title = "Ubicación guardada"
+            mapView.overlays.add(savedMarker)
 
-           mapView.invalidate()
+            mapView.invalidate()
         }else{
             val userLocation = GeoPoint(location.latitude, location.longitude)
             Data.latitud = location.latitude
@@ -380,30 +379,30 @@ class MapaRestaurante: AppCompatActivity() {
         return drawable
     }
 
-    // TO-DO ENTREGA FINAL
-   override fun onResume() {
-       super.onResume()
-       mapView.onResume()
-       val mapController: IMapController = mapView.controller
-       mapController.setZoom(18.0)
 
-       // Intentar obtener la ubicación y centrar el mapa en la reanudación de la actividad
-       if (ContextCompat.checkSelfPermission(
-               this,
-               Manifest.permission.ACCESS_FINE_LOCATION
-           ) == PackageManager.PERMISSION_GRANTED
-       ) {
-           setLocation()
-       }
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+        val mapController: IMapController = mapView.controller
+        mapController.setZoom(18.0)
 
-
-   }
+        // Intentar obtener la ubicación y centrar el mapa en la reanudación de la actividad
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            setLocation()
+        }
 
 
-   override fun onPause() {
-       super.onPause()
-       mapView.onPause()
-   }
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
 
 
 

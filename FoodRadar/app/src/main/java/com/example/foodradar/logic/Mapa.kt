@@ -103,6 +103,7 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         mLocationRequest = createLocationRequest()
+
         mLocationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult) {
                 val location = locationResult.lastLocation
@@ -143,12 +144,12 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
 
         boton.setOnClickListener {
             //Ubicar el mapa en la ubicación del usuario
-           mapView.controller.setZoom(15.0)
-           mapView.controller.setCenter(Data.latitud?.let { it1 -> Data.longitud?.let { it2 ->
-               GeoPoint(it1,
-                   it2
-               )
-           } })
+            mapView.controller.setZoom(15.0)
+            mapView.controller.setCenter(Data.latitud?.let { it1 -> Data.longitud?.let { it2 ->
+                GeoPoint(it1,
+                    it2
+                )
+            } })
 
         }
 
@@ -159,6 +160,10 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
         if (Data.latitud == null || Data.longitud == null) {
             Log.e("onRestaurantesActualizados", "Latitud o longitud no están disponibles")
             return // Termina la ejecución si los valores son null
+        }
+        if (!::mapView.isInitialized) {
+            Log.e("onRestaurantesActualizados", "MapView no está inicializado")
+            return
         }
         val location = Location("dummyprovider") // Puedes usar un nombre cualquiera para el proveedor
         location.latitude = Data.latitud!!
@@ -294,11 +299,11 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // TO-DO ENTREGA FINAL var intentCuenta = Intent(this, Perfil::class.java)
+        var intentCuenta = Intent(this, Perfil::class.java)
         var intentMiRestaurante = Intent(this, MiRestaurante::class.java)
         var intentCerrarSesion = Intent(this, InicioSesion::class.java)
         when (item.itemId) {
-            // TO-DO ENTREGA FINAL R.id.Cuenta -> startActivity(intentCuenta)
+            R.id.Cuenta -> startActivity(intentCuenta)
             R.id.miRestaurante -> startActivity(intentMiRestaurante)
             R.id.Inicio -> {}
             R.id.cerrarSesion -> {

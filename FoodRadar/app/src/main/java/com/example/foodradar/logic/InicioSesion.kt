@@ -117,7 +117,7 @@ class InicioSesion : AppCompatActivity() {
                                             Sesion.restaurante["calificacion"] = restauranteData["calificacion"] as? Double ?: 0.0
                                             Sesion.restaurante["longitud"] = restauranteData["longitud"] as? Double ?: 0.0
                                             Sesion.restaurante["latitud"] = restauranteData["latitud"] as? Double ?: 0.0
-                                            Sesion.restaurante["visibilidad"] = restauranteData["visibilidad"] as Boolean ?: false
+                                            Sesion.restaurante["visibilidad"] = restauranteData["visibilidad"] as? Boolean ?: false
                                             Log.i("GET-RESTAURANTE", Sesion.restaurante.toString())
                                             Log.i("GET-SESION", Sesion.userId)
                                             Log.i("GET-SESION",
