@@ -226,11 +226,15 @@ class Mapa: AppCompatActivity(), RestaurantesListener {
         }
 
         // Calcular tiempo estimado de la ruta
-        val duracion = road.mDuration
-        val totalDurationInMinutes = duracion / 60
-        val redondeado = kotlin.math.round(totalDurationInMinutes)
+        val duracion = road.mDuration // en segundos
+        val totalDurationInMinutes = duracion / 60.0
+        val estimacionFinal = if (totalDurationInMinutes < 15) {
+            kotlin.math.round(totalDurationInMinutes)
+        } else {
+            kotlin.math.round(totalDurationInMinutes + 30)
+        }
 
-        statusTextView.text = "Duracion Estimada Recorrido: $redondeado minutos"
+        statusTextView.text = "Duración estimada del recorrido: $estimacionFinal minutos"
         statusTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
 
         // Dibujar la ruta en el mapa
