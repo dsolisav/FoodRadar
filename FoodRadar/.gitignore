@@ -42,3 +42,6 @@ output.json
 #NDK
 obj/
 .externalNativeBuild
+
+# Firebase config (contains API keys)
+google-services.json

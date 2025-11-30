@@ -1,6 +1,7 @@
 package com.example.foodradar.data
 
 import android.util.Log
+import com.example.foodradar.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
@@ -13,8 +14,8 @@ import java.net.URL
 
 class GeminiService {
     companion object {
-        private const val API_KEY = "***REMOVED***"
-        private const val API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$API_KEY"
+        private val API_KEY = BuildConfig.GEMINI_API_KEY
+        private val API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$API_KEY"
 
         suspend fun getRecomendacion(prompt: String): String {
             return withContext(Dispatchers.IO) {
